@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Street Vybz Entertainment &amp; Events | Nairobi Event Production</title>
+<link rel="preload" as="image" href="assets/logo_1.webp" type="image/webp">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#C9963A;--gold-light:#F0C060;--dark:#0E0E14;--dark2:#16161F;--dark3:#1E1E2A;--text:#E8E4DA;--text-muted:#9A9080;--white:#FFFFFF}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(14,14,20,0.97);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,150,58,0.2);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.12em;color:var(--gold);text-decoration:none}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--dark);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.55rem 1.3rem;border-radius:0.2rem;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--gold-light)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(14,14,20,0.99);border-bottom:1px solid rgba(201,150,58,0.2);padding:1.5rem 2rem;flex-direction:column;gap:1.2rem;z-index:99}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--text-muted);text-decoration:none;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase}
+
+.hero{min-height:95vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem 4rem;position:relative;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,150,58,0.08) 0%,transparent 70%)}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(201,150,58,0.035) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(201,150,58,0.035) 80px);pointer-events:none}
+.hero-tag{display:inline-block;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,150,58,0.4);padding:0.35rem 1.2rem;border-radius:2rem;margin-bottom:2.2rem;position:relative}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.8rem,10vw,8rem);letter-spacing:0.04em;line-height:0.92;color:var(--white);margin-bottom:0.6rem;position:relative}
+.hero-title span{color:var(--gold)}
+.hero-sub{font-size:clamp(0.9rem,2.2vw,1.2rem);color:var(--text-muted);font-weight:300;letter-spacing:0.05em;margin:1.5rem 0 2.8rem;position:relative}
+.hero-sub strong{color:var(--text);font-weight:400}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;position:relative}
+.btn-primary{background:var(--gold);color:var(--dark);font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.9rem 2.2rem;border-radius:0.25rem;border:none;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-block}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--text);font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:0.9rem 2.2rem;border-radius:0.25rem;border:1px solid rgba(255,255,255,0.2);text-decoration:none;transition:border-color 0.2s,color 0.2s;display:inline-block}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:var(--text-muted);font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;animation:bounce 2.5s infinite}
+.hero-scroll::after{content:'';width:1px;height:36px;background:linear-gradient(to bottom,rgba(201,150,58,0.6),transparent)}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-7px)}}
+
+.stats-bar{background:var(--dark2);border-top:1px solid rgba(201,150,58,0.2);border-bottom:1px solid rgba(201,150,58,0.2);padding:1.8rem 2rem;display:flex;justify-content:center;gap:4rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--gold);letter-spacing:0.05em;line-height:1}
+.stat-label{font-size:0.68rem;color:var(--text-muted);letter-spacing:0.14em;text-transform:uppercase;margin-top:0.25rem}
+
+.si{max-width:1100px;margin:0 auto;padding:5rem 2rem}
+.ey{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem}
+.st{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,4.5vw,3.2rem);letter-spacing:0.05em;color:var(--white);margin-bottom:1rem;line-height:1.02}
+.sl{color:var(--text-muted);font-size:1rem;line-height:1.75;max-width:540px;font-weight:300}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(201,150,58,0.12);border:1px solid rgba(201,150,58,0.15);margin-top:3rem;border-radius:0.5rem;overflow:hidden}
+.sc{background:var(--dark2);padding:1.8rem 1.5rem;transition:background 0.25s}
+.sc:hover{background:var(--dark3)}
+.sc:hover .si2{color:var(--gold);transform:scale(1.1)}
+.si2{font-size:1.7rem;margin-bottom:1rem;color:var(--text-muted);transition:color 0.25s,transform 0.25s;display:inline-block}
+.sn{font-weight:600;font-size:0.88rem;color:var(--white);letter-spacing:0.03em;margin-bottom:0.45rem}
+.sd{font-size:0.78rem;color:var(--text-muted);line-height:1.65}
+
+/* GALLERY */
+.gallery-filters{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:2rem}
+.gf{background:var(--dark3);border:1px solid rgba(255,255,255,0.07);color:var(--text-muted);font-size:0.75rem;padding:0.4rem 1rem;border-radius:2rem;cursor:pointer;transition:all 0.2s;user-select:none}
+.gf:hover,.gf.active{background:rgba(201,150,58,0.12);border-color:var(--gold);color:var(--gold)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem}
+.gi{border-radius:0.35rem;overflow:hidden;position:relative;aspect-ratio:4/3;cursor:pointer;transition:transform 0.3s}
+.gi:hover{transform:scale(1.02)}
+.gi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s}
+.gi:hover img{transform:scale(1.06)}
+.gi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,18,0.88) 0%,transparent 55%);opacity:0;transition:opacity 0.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:1rem}
+.gi:hover .gi-overlay{opacity:1}
+.gi-label{font-size:0.75rem;font-weight:600;color:var(--white);letter-spacing:0.04em;margin-bottom:0.2rem}
+.gi-cat{font-size:0.65rem;color:var(--gold);letter-spacing:0.06em}
+.gi.hidden{display:none}
+
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;background:rgba(5,5,10,0.96);z-index:1000;align-items:center;justify-content:center;padding:1rem}
+.lb.open{display:flex}
+.lb-inner{position:relative;max-width:90vw;max-height:90vh}
+.lb-inner img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:0.35rem;display:block}
+.lb-info{text-align:center;margin-top:0.8rem}
+.lb-title{font-size:0.9rem;font-weight:500;color:var(--white)}
+.lb-cat{font-size:0.72rem;color:var(--gold);margin-top:0.2rem}
+.lb-close{position:fixed;top:1.5rem;right:1.5rem;background:rgba(255,255,255,0.1);border:none;color:var(--white);font-size:1.4rem;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.lb-close:hover{background:rgba(201,150,58,0.3)}
+.lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:var(--white);font-size:1.4rem;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.lb-nav:hover{background:rgba(201,150,58,0.25)}
+.lb-prev{left:1rem}
+.lb-next{right:1rem}
+
+/* PACKAGES */
+.packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:3rem}
+.pkg{background:var(--dark2);border:1px solid rgba(255,255,255,0.07);border-radius:0.5rem;padding:2.2rem 1.8rem;position:relative;transition:border-color 0.2s,transform 0.2s}
+.pkg:hover{transform:translateY(-3px)}
+.pkg.featured{border-color:var(--gold);background:linear-gradient(145deg,rgba(201,150,58,0.06) 0%,var(--dark2) 60%)}
+.pkg-badge{position:absolute;top:-0.7rem;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--dark);font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.28rem 1rem;border-radius:2rem;white-space:nowrap}
+.pkg-name{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:0.08em;color:var(--white);margin-bottom:0.3rem}
+.pkg-ideal{font-size:0.73rem;color:var(--text-muted);margin-bottom:1.8rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.pkg-features{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+.pkg-features li{font-size:0.8rem;color:var(--text-muted);display:flex;align-items:flex-start;gap:0.7rem;line-height:1.4}
+.pkg-features li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:0.35rem}
+
+/* WHY US */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:3rem}
+.why-card{padding:1.6rem;border-left:2px solid var(--gold);background:var(--dark2);transition:background 0.2s}
+.why-card:hover{background:var(--dark3)}
+.wc-icon{font-size:1.3rem;margin-bottom:0.9rem}
+.wc-title{font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.45rem}
+.wc-text{font-size:0.78rem;color:var(--text-muted);line-height:1.7}
+
+/* PROCESS */
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;margin-top:3rem}
+.step{text-align:center;padding:0 1rem}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);width:56px;height:56px;border:1px solid rgba(201,150,58,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;background:var(--dark)}
+.step-title{font-weight:600;font-size:0.88rem;color:var(--white);margin-bottom:0.4rem}
+.step-text{font-size:0.75rem;color:var(--text-muted);line-height:1.6}
+
+/* CONTACT */
+.contact-wrap{background:var(--dark3);border:1px solid rgba(201,150,58,0.25);border-radius:0.6rem;padding:3.5rem 2rem;text-align:center;margin-top:3rem;position:relative;overflow:hidden}
+.contact-wrap::before{content:'STREET VYBZ';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Bebas Neue',sans-serif;font-size:9rem;letter-spacing:0.1em;color:rgba(201,150,58,0.04);white-space:nowrap;pointer-events:none;line-height:1}
+.ct{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,3vw,2.2rem);color:var(--white);letter-spacing:0.06em;margin-bottom:0.6rem}
+.cs{color:var(--text-muted);font-size:0.88rem;font-weight:300;margin-bottom:2.5rem}
+.contact-info{display:flex;justify-content:center;flex-wrap:wrap;gap:2.5rem;margin:2rem 0 2.8rem}
+.ci a{text-decoration:none;color:inherit}
+.ci a:hover .cd{color:var(--gold)}
+.cd{font-size:1rem;font-weight:500;color:var(--white);transition:color 0.2s}
+.ctype{font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.2rem}
+
+footer{background:var(--dark);border-top:1px solid rgba(201,150,58,0.15);text-align:center;padding:2.5rem 2rem}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.14em;color:var(--gold);margin-bottom:0.8rem}
+.footer-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:1rem}
+.footer-links a{color:var(--text-muted);text-decoration:none;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{color:var(--text-muted);font-size:0.72rem;letter-spacing:0.04em}
+.footer-copy span{color:var(--gold)}
+
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-bar{gap:2rem}
+  .process-steps{gap:2rem}
+  .contact-wrap::before{font-size:5rem}
+}
+@media(max-width:480px){
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .si{padding:4rem 1.5rem}
+  .stats-bar{gap:1.5rem}
+}
+</style>
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#"><img src="assets/logo_1.webp" alt="Street Vybz Entertainment &amp; Events" style="height:48px;width:auto;object-fit:contain;filter:drop-shadow(0 0 4px rgba(201,150,58,0.3))"></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#eventtypes">Event Types</a>
+    <a href="#packages">Packages</a>
+    <a href="#process">Process</a>
+    <a href="#clients">Clients</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="#contact">Request a Quote</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#gallery" onclick="closeMenu()">Gallery</a>
+  <a href="#eventtypes" onclick="closeMenu()">Event Types</a>
+  <a href="#packages" onclick="closeMenu()">Packages</a>
+  <a href="#process" onclick="closeMenu()">Process</a>
+  <a href="#clients" onclick="closeMenu()">Clients</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<div class="hero">
+  <div style="margin-bottom:1.5rem;position:relative"><img src="assets/logo_1.webp" alt="Street Vybz Entertainment &amp; Events Logo" style="width:200px;height:auto;object-fit:contain;filter:drop-shadow(0 0 20px rgba(201,150,58,0.25))"></div>
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.8rem;position:relative">Street Vybz Entertainment &amp; Events</div>
+<div class="hero-tag">Professional Event Production and AV Solutions in Kenya</div>
+  <h1 class="hero-title">CORPORATE EVENT<br><span>PRODUCTION &amp;</span><br>AV SOLUTIONS.</h1>
+  <p class="hero-sub">
+    Delivering professional sound, LED screens, staging, lighting, decor, tenting and event management for conferences, exhibitions, product launches, activations and corporate functions across Kenya.
+  </p>
+  <div class="hero-cta">
+    <a class="btn-primary" href="#contact">Request a Quotation</a>
+    <a class="btn-outline" href="#services">View Our Services</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Events Supported</div></div>
+  <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Service Categories</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Professional Delivery</div></div>
+  <div class="stat"><div class="stat-num">KE</div><div class="stat-label">Available Across Kenya</div></div>
+</div>
+
+<section id="about" style="background:var(--dark2)">
+<div class="si">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+    <div>
+      <div class="ey">About us</div>
+      <h2 class="st">ABOUT STREET VYBZ ENT.<br>&amp; EVENTS.</h2>
+      <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.85;font-weight:300;margin-bottom:1.2rem">
+        Street Vybz Entertainment &amp; Events is a Kenyan event management and production company specialising in the planning, coordination, and execution of corporate, institutional, and social events.
+      </p>
+      <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.85;font-weight:300;margin-bottom:1.2rem">
+        We provide end-to-end event solutions including professional sound systems, LED screens, stage and lighting production, tenting, seating arrangements, décor, and DJ services. Our team is committed to delivering seamless event experiences through quality equipment, technical expertise, and exceptional customer service.
+      </p>
+      <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.85;font-weight:300">
+        Whether you're organising a conference, product launch, AGM, exhibition, team-building event, awards gala, or outdoor activation, we have the equipment and expertise to bring your vision to life.
+      </p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div style="background:var(--dark3);border-left:3px solid var(--gold);padding:1.2rem 1.5rem">
+        <div style="font-weight:600;color:var(--white);font-size:0.88rem;margin-bottom:0.3rem">Our Mission</div>
+        <div style="color:var(--text-muted);font-size:0.8rem;line-height:1.65">To deliver world-class event production solutions that exceed client expectations through professionalism, quality equipment, and dedicated service.</div>
+      </div>
+      <div style="background:var(--dark3);border-left:3px solid var(--gold);padding:1.2rem 1.5rem">
+        <div style="font-weight:600;color:var(--white);font-size:0.88rem;margin-bottom:0.3rem">Who We Serve</div>
+        <div style="color:var(--text-muted);font-size:0.8rem;line-height:1.65">Corporates, NGOs, government agencies, universities, banks, private companies, and individuals across Kenya.</div>
+      </div>
+      <div style="background:var(--dark3);border-left:3px solid var(--gold);padding:1.2rem 1.5rem">
+        <div style="font-weight:600;color:var(--white);font-size:0.88rem;margin-bottom:0.3rem">Our Coverage</div>
+        <div style="color:var(--text-muted);font-size:0.8rem;line-height:1.65">Based in Nairobi with the capability to support events across Kenya, from small executive meetings to large-scale outdoor productions.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<style>
+@media(max-width:768px){
+  #about .si > div[style*="grid"]{grid-template-columns:1fr !important;gap:2rem !important}
+}
+</style>
+
+<section id="services">
+<div class="si">
+  <div class="ey">What we offer</div>
+  <h2 class="st">OUR SERVICES.</h2>
+  <p class="sl">End-to-end event production solutions for corporates, NGOs, government agencies, universities, and private organisations across Kenya.</p>
+  <div class="services-grid">
+    <div class="sc"><div class="si2">🔊</div><div class="sn">Public Address Systems</div><div class="sd">Professional PA for venues of all sizes, indoors and outdoors. Crystal-clear coverage guaranteed.</div></div>
+    <div class="sc"><div class="si2">🎧</div><div class="sn">DJ Services</div><div class="sd">Experienced DJs across all genres for weddings, clubs, concerts, corporate events and more.</div></div>
+    <div class="sc"><div class="si2">🌸</div><div class="sn">Decor & Styling</div><div class="sd">Custom-themed setups from elegant floral arrangements to bold modern installations.</div></div>
+    <div class="sc"><div class="si2">⛺</div><div class="sn">Tents for Hire</div><div class="sd">Marquee and event tents, weather-proof and professionally installed for any outdoor event.</div></div>
+    <div class="sc"><div class="si2">🪑</div><div class="sn">Seats & Furniture</div><div class="sd">Banquet chairs, Chiavari chairs, tables and linens for a polished, comfortable setup.</div></div>
+    <div class="sc"><div class="si2">📺</div><div class="sn">TVs for Hire</div><div class="sd">HD screens for presentations, branding displays, and live-feed viewing at events of all sizes.</div></div>
+    <div class="sc"><div class="si2">💡</div><div class="sn">LED Screens</div><div class="sd">Giant LED displays for concerts, product launches, and outdoor activations.</div></div>
+    <div class="sc"><div class="si2">✨</div><div class="sn">Stage & Lighting</div><div class="sd">Custom stage builds, rigging, and dynamic lighting that transforms any venue.</div></div>
+  </div>
+</div>
+</section>
+
+<section id="gallery" style="background:var(--dark2)">
+<div class="si">
+  <div class="ey">Portfolio</div>
+  <h2 class="st">OUR WORK.<br>YOUR PROOF.</h2>
+  <p class="sl">Real events. Real setups. This is the quality, professionalism and care we bring to every engagement.</p>
+  <div class="gallery-filters" style="margin-top:2rem">
+    <div class="gf active" data-filter="all">All Events</div>
+    <div class="gf" data-filter="tent">Tents & Decor</div>
+    <div class="gf" data-filter="sound">Sound & PA</div>
+    <div class="gf" data-filter="screen">Screens & LED</div>
+    <div class="gf" data-filter="stage">Stage</div>
+    <div class="gf" data-filter="wedding">Weddings</div>
+    <div class="gf" data-filter="corporate">Corporate</div>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</div>
+</section>
+
+<div class="lb" id="lightbox">
+  <button class="lb-close" onclick="closeLb()">&#x2715;</button>
+  <button class="lb-nav lb-prev" onclick="navLb(-1)">&#8592;</button>
+  <div class="lb-inner">
+    <img loading="lazy" id="lbImg" src="" alt="">
+    <div class="lb-info">
+      <div class="lb-title" id="lbTitle"></div>
+      <div class="lb-cat" id="lbCat"></div>
+    </div>
+  </div>
+  <button class="lb-nav lb-next" onclick="navLb(1)">&#8594;</button>
+</div>
+
+<section id="eventtypes" style="background:var(--dark)">
+<div class="si">
+  <div class="ey">What we successfully deliver</div>
+  <h2 class="st">EVENTS WE<br>SUPPORT.</h2>
+  <p class="sl">From intimate boardroom sessions to large outdoor productions, we have the expertise and equipment to deliver across all event formats.</p>
+  <div class="et-grid">
+
+    <div class="et-card">
+      <i class="ph ph-buildings et-icon"></i>
+      <div class="et-name">Corporate Conferences</div>
+    </div>
+
+    <div class="et-card">
+      <i class="ph ph-clipboard-text et-icon"></i>
+      <div class="et-name">Annual General Meetings</div>
+    </div>
+
+    <div class="et-card">
+      <i class="ph ph-rocket-launch et-icon"></i>
+      <div class="et-name">Product Launches</div>
+    </div>
+
+    <div class="et-card">
+      <i class="ph ph-trophy et-icon"></i>
+      <div class="et-name">Award Ceremonies</div>
+    </div>
+
+    <div class="et-card">
+      <i class="ph ph-storefront et-icon"></i>
+      <div class="et-name">Trade Shows &amp; Exhibitions</div>
+    </div>
+
+    <div class="et-card">
+      <i class="ph ph-bank et-icon"></i>
+      <div class="et-name">Government Events</div>
+    </div>
+
+    <div class="et-card">
+      <i class="ph ph-globe-hemisphere-west et-icon"></i>
+      <div class="et-name">NGO Events</div>
+    </div>
+
+    <div class="et-card">
+      <i class="ph ph-users-three et-icon"></i>
+      <div class="et-name">Team Building Activities</div>
+    </div>
+
+    <div class="et-card">
+      <i class="ph ph-megaphone et-icon"></i>
+      <div class="et-name">Brand Activations</div>
+    </div>
+
+    <div class="et-card">
+      <i class="ph ph-map-trifold et-icon"></i>
+      <div class="et-name">Roadshows</div>
+    </div>
+
+    <div class="et-card">
+      <i class="ph ph-graduation-cap et-icon"></i>
+      <div class="et-name">Graduation Ceremonies</div>
+    </div>
+
+    <div class="et-card">
+      <i class="ph ph-sun-horizon et-icon"></i>
+      <div class="et-name">Outdoor Events</div>
+    </div>
+
+    <div class="et-card">
+      <i class="ph ph-heart et-icon"></i>
+      <div class="et-name">Weddings &amp; Private Functions</div>
+    </div>
+
+  </div>
+
+  <style>
+  .et-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(201,150,58,0.12);border:1px solid rgba(201,150,58,0.15);border-radius:0.5rem;overflow:hidden;margin-top:2.5rem}
+  .et-card{background:var(--dark2);padding:1.8rem 1.5rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.8rem;transition:background 0.25s,transform 0.25s;cursor:default}
+  .et-card:hover{background:var(--dark3)}
+  .et-card:hover .et-icon{color:var(--gold);transform:scale(1.15)}
+  .et-icon{font-size:2rem;color:var(--text-muted);transition:color 0.25s,transform 0.25s}
+  .et-name{font-size:0.82rem;font-weight:600;color:var(--white);line-height:1.4;letter-spacing:0.02em}
+  </style>
+</div>
+</section>
+
+<section id="packages">
+<div class="si">
+  <div class="ey">Pricing tiers</div>
+  <h2 class="st">FIND YOUR FIT.</h2>
+  <p class="sl">Every package is fully customisable to your event requirements and budget. Transparent pricing with no hidden charges ever.</p>
+  <div class="packages">
+    <div class="pkg">
+      <div class="pkg-name">Starter</div>
+      <div class="pkg-ideal">Small private events & parties</div>
+      <ul class="pkg-features">
+        <li>PA System (basic setup)</li>
+        <li>DJ Services</li>
+        <li>Basic event lighting</li>
+        <li>Chairs & tables hire</li>
+      </ul>
+    </div>
+    <div class="pkg featured">
+      <div class="pkg-badge">Most Popular</div>
+      <div class="pkg-name">Premium</div>
+      <div class="pkg-ideal">Weddings & corporate events</div>
+      <ul class="pkg-features">
+        <li>Full PA system</li>
+        <li>Professional DJ</li>
+        <li>LED screen display</li>
+        <li>Stage & lighting setup</li>
+        <li>Tent, seating & decor</li>
+      </ul>
+    </div>
+    <div class="pkg">
+      <div class="pkg-name">Full Production</div>
+      <div class="pkg-ideal">Concerts & large-scale events</div>
+      <ul class="pkg-features">
+        <li>Concert-grade PA system</li>
+        <li>Multi-screen LED setup</li>
+        <li>Full stage design & rigging</li>
+        <li>Advanced lighting effects</li>
+        <li>Complete decor & tenting</li>
+        <li>On-site technical crew</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:1.8rem;font-size:0.78rem;color:var(--text-muted);text-align:center">Contact us for a custom quote &nbsp;→&nbsp; <a href="tel:+254705050215" style="color:var(--gold);text-decoration:none">0705 050 215</a></p>
+</div>
+</section>
+
+<section style="background:var(--dark2)">
+<div class="si">
+  <div class="ey">Why organisations choose us</div>
+  <h2 class="st">WHY STREET VYBZ?</h2>
+  <div class="why-grid">
+    <div class="why-card"><div class="wc-icon">⚡</div><div class="wc-title">One-Stop Partner</div><div class="wc-text">Sound, visuals, décor, staging, all from one team. No coordination headaches, no chasing multiple vendors.</div></div>
+    <div class="why-card"><div class="wc-icon">🎯</div><div class="wc-title">Built for Nairobi</div><div class="wc-text">We know the local venue landscape, the logistics, and what Nairobi audiences expect from a great event.</div></div>
+    <div class="why-card"><div class="wc-icon">🔧</div><div class="wc-title">Pro-Grade Equipment</div><div class="wc-text">Well-maintained, high-quality gear that ensures your event sounds and looks its absolute best, every time.</div></div>
+    <div class="why-card"><div class="wc-icon">🤝</div><div class="wc-title">Reliable, Every Time</div><div class="wc-text">On-time setup, on-site technical support, and a crew that stays present from load-in to the final moment.</div></div>
+    <div class="why-card"><div class="wc-icon">💬</div><div class="wc-title">Transparent Quotes</div><div class="wc-text">No hidden fees. You receive a clear, itemised quote before anything is confirmed or committed.</div></div>
+    <div class="why-card"><div class="wc-icon">🎨</div><div class="wc-title">Your Vision, Realised</div><div class="wc-text">We adapt to every brief, intimate or massive, traditional or contemporary, simple or spectacular.</div></div>
+  </div>
+</div>
+</section>
+
+<section id="capacity" style="background:var(--dark)">
+<div class="si">
+  <div class="ey">Our capability</div>
+  <h2 class="st">BUILT TO SUPPORT EVENTS<br>OF ALL SIZES.</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2rem">
+    <div>
+      <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.85;font-weight:300;margin-bottom:1.2rem">
+        Street Vybz Entertainment &amp; Events has the capability to support events ranging from small executive meetings to large scale outdoor functions requiring professional sound, staging, lighting, visual displays and guest accommodation infrastructure.
+      </p>
+      <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.85;font-weight:300">
+        Our team works closely with clients to ensure every event receives the right equipment, technical support and operational planning required for success, regardless of scale, venue or complexity.
+      </p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem">
+      <div style="background:var(--dark2);border-top:3px solid var(--gold);padding:1.4rem 1.2rem;text-align:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold);letter-spacing:0.05em">SMALL</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem;line-height:1.5">Executive meetings, boardroom sessions &amp; private functions</div>
+      </div>
+      <div style="background:var(--dark2);border-top:3px solid var(--gold);padding:1.4rem 1.2rem;text-align:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold);letter-spacing:0.05em">MEDIUM</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem;line-height:1.5">Conferences, product launches, graduations &amp; galas</div>
+      </div>
+      <div style="background:var(--dark2);border-top:3px solid var(--gold);padding:1.4rem 1.2rem;text-align:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold);letter-spacing:0.05em">LARGE</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem;line-height:1.5">Outdoor events, trade shows, roadshows &amp; public activations</div>
+      </div>
+      <div style="background:var(--dark2);border-top:3px solid var(--gold);padding:1.4rem 1.2rem;text-align:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold);letter-spacing:0.05em">KENYA</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem;line-height:1.5">Available for events across all regions of Kenya</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<style>
+@media(max-width:768px){
+  #capacity .si > div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
+}
+</style>
+
+<section id="process">
+<div class="si">
+  <div class="ey">How we work</div>
+  <h2 class="st">SIMPLE PROCESS.<br>GREAT RESULTS.</h2>
+  <p class="sl">A straightforward, professional engagement process designed for corporates, institutions, and event planners.</p>
+  <div class="process-steps">
+    <div class="step"><div class="step-num">01</div><div class="step-title">Reach Out</div><div class="step-text">Contact us via call, WhatsApp, or email with your event details, date, venue, and what you need.</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">Consultation</div><div class="step-text">We discuss your vision, requirements, and budget to craft the ideal solution for your event.</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">Custom Quote</div><div class="step-text">Receive a detailed, transparent quote with no hidden charges, tailored exactly to your needs.</div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">Event Day</div><div class="step-text">Our team sets up, manages everything on the day, and strikes down, you enjoy the event stress-free.</div></div>
+  </div>
+</div>
+</section>
+
+<section id="contact" style="background:var(--dark2)">
+<div class="si">
+  <div style="text-align:center">
+    <div class="ey">Get in touch</div>
+    <h2 class="st" style="text-align:center">LET'S MAKE YOUR<br>NEXT EVENT A SUCCESS.</h2>
+    <p class="sl" style="margin:0 auto;text-align:center">Whether you're planning a conference, product launch, exhibition, team-building event, or awards gala, we're ready to deliver professional event solutions tailored to your needs.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="ct">Get a Free Quotation Today.</div>
+    <div class="cs">Reach our team through any of the channels below, we respond within 24 hours</div>
+    <div class="contact-info">
+      <div class="ci"><div class="ctype">Phone / WhatsApp</div><a href="tel:+254705050215"><div class="cd">0705 050 215</div></a></div>
+      <div class="ci"><div class="ctype">Email</div><a href="mailto:info@streetvybzent.com"><div class="cd">info@streetvybzent.com</div></a></div>
+      <div class="ci"><div class="ctype">Website</div><a href="https://www.streetvybzent.com" target="_blank"><div class="cd">streetvybzent.com</div></a></div>
+      <div class="ci"><div class="ctype">Location</div><div class="cd">Nairobi, Kenya</div></div>
+    </div>
+    <a class="btn-primary" href="https://wa.me/+254705050215" target="_blank">Message Us on WhatsApp</a>
+  </div>
+</div>
+</section>
+
+
+<section id="testimonials" style="background:var(--dark2)">
+<div class="si">
+  <div class="ey">Client feedback</div>
+  <h2 class="st">WHAT CLIENTS<br>SAY.</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin-top:2.5rem">
+
+    <div style="background:var(--dark3);border:1px solid rgba(255,255,255,0.06);border-radius:0.5rem;padding:2rem;position:relative">
+      <div style="font-size:2.5rem;color:var(--gold);line-height:1;margin-bottom:1rem;font-family:Georgia,serif">&ldquo;</div>
+      <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.8;font-style:italic;margin-bottom:1.5rem">Street Vybz Entertainment &amp; Events provided excellent sound and LED screen services during our corporate event. Their team was professional, punctual, and highly responsive throughout the event.</p>
+      <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:1rem">
+        <div style="font-size:0.82rem;font-weight:600;color:var(--white)">Humphrey Okeno</div>
+        <div style="font-size:0.72rem;color:var(--gold);letter-spacing:0.06em;margin-top:0.2rem">Corporate Client, Nairobi</div>
+      </div>
+    </div>
+
+    <div style="background:var(--dark3);border:1px solid rgba(255,255,255,0.06);border-radius:0.5rem;padding:2rem;position:relative">
+      <div style="font-size:2.5rem;color:var(--gold);line-height:1;margin-bottom:1rem;font-family:Georgia,serif">&ldquo;</div>
+      <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.8;font-style:italic;margin-bottom:1.5rem">The event setup was flawless, and their technical support team ensured everything ran smoothly from start to finish. We will definitely work with them again.</p>
+      <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:1rem">
+        <div style="font-size:0.82rem;font-weight:600;color:var(--white)">Emily Nafula</div>
+        <div style="font-size:0.72rem;color:var(--gold);letter-spacing:0.06em;margin-top:0.2rem">Event Organiser, Nairobi</div>
+      </div>
+    </div>
+
+    <div style="background:var(--dark3);border:1px solid rgba(255,255,255,0.06);border-radius:0.5rem;padding:2rem;position:relative">
+      <div style="font-size:2.5rem;color:var(--gold);line-height:1;margin-bottom:1rem;font-family:Georgia,serif">&ldquo;</div>
+      <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.8;font-style:italic;margin-bottom:1.5rem">Highly professional team with quality equipment. They handled our product launch end-to-end, from stage setup to sound to décor, and delivered beyond expectations.</p>
+      <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:1rem">
+        <div style="font-size:0.82rem;font-weight:600;color:var(--white)">Martin Mwangi</div>
+        <div style="font-size:0.72rem;color:var(--gold);letter-spacing:0.06em;margin-top:0.2rem">Marketing Manager, SPM Buzz</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<section id="clients" style="background:var(--dark)">
+<div class="si">
+  <div class="ey">Trusted by great brands</div>
+  <h2 class="st">OUR CLIENTS.</h2>
+  <p class="sl">We are proud to have worked with some of Kenya's most recognised organisations and brands.</p>
+
+  <div class="clients-grid">
+
+    <div class="client-card">
+      <div class="client-logo-wrap">
+        <img src="assets/client_1.webp" loading="lazy" alt="African Originals" style="max-height:70px;max-width:130px;object-fit:contain">
+      </div>
+      <div class="client-name">African Originals</div>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo-wrap">
+        <img src="assets/client_2.webp" loading="lazy" alt="DKT East Africa" style="max-height:70px;max-width:130px;object-fit:contain">
+      </div>
+      <div class="client-name">DKT East Africa</div>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo-wrap">
+        <img src="assets/client_3.webp" loading="lazy" alt="Fresh Life" style="max-height:70px;max-width:130px;object-fit:contain;border-radius:6px">
+      </div>
+      <div class="client-name">Fresh Life</div>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo-wrap">
+        <img src="assets/client_4.webp" loading="lazy" alt="Elite Gymnastics Academy" style="max-height:70px;max-width:130px;object-fit:contain">
+      </div>
+      <div class="client-name">Elite Gymnastics Academy</div>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo-wrap">
+        <img src="assets/logo_2.webp" loading="lazy" alt="Kilimani Community Foundation" style="max-height:70px;max-width:140px;object-fit:contain">
+      </div>
+      <div class="client-name">Kilimani Community Foundation</div>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo-wrap">
+        <img src="assets/client_5.webp" loading="lazy" alt="IQSK" style="max-height:70px;max-width:130px;object-fit:contain">
+      </div>
+      <div class="client-name">IQSK</div>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo-wrap">
+        <img src="assets/client_6.webp" loading="lazy" alt="SPM Buzz" style="max-height:70px;max-width:130px;object-fit:contain;border-radius:6px">
+      </div>
+      <div class="client-name">SPM Buzz</div>
+    </div>
+
+  </div>
+</div>
+</section>
+<section id="social" style="background:var(--dark2)">
+<div class="si" style="text-align:center">
+  <div class="ey">Connect with us</div>
+  <h2 class="st" style="text-align:center">FIND US ONLINE.</h2>
+  <p class="sl" style="margin:0 auto;text-align:center">Follow us for event highlights, behind-the-scenes content, and updates.</p>
+  <div class="social-grid">
+
+    <a class="social-card" href="https://www.tiktok.com/@StreetVybzEnt" target="_blank">
+      <div class="social-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="social-platform">TikTok</div>
+      <div class="social-handle">@StreetVybzEnt</div>
+    </a>
+
+    <a class="social-card" href="https://www.instagram.com/StreetVybzEntKe" target="_blank">
+      <div class="social-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2" fill="none"/>
+          <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+          <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="social-platform">Instagram</div>
+      <div class="social-handle">@StreetVybzEntKe</div>
+    </a>
+
+    <a class="social-card" href="https://twitter.com/Str8vybzEnt" target="_blank">
+      <div class="social-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="social-platform">X / Twitter</div>
+      <div class="social-handle">@Str8vybzEnt</div>
+    </a>
+
+    <a class="social-card" href="https://web.facebook.com/StreetVybzEntKe/" target="_blank">
+      <div class="social-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="social-platform">Facebook</div>
+      <div class="social-handle">StreetVybzEnt</div>
+    </a>
+
+    <a class="social-card" href="https://www.linkedin.com/in/streetvybzentertainment/" target="_blank">
+      <div class="social-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="social-platform">LinkedIn</div>
+      <div class="social-handle">Street Vybz Entertainment &amp; Events</div>
+    </a>
+
+  </div>
+</div>
+</section>
+
+<style>
+.clients-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(201,150,58,0.1);border:1px solid rgba(201,150,58,0.12);border-radius:0.5rem;overflow:hidden;margin-top:3rem}
+.client-card{background:var(--dark2);padding:1.8rem 1.2rem;display:flex;flex-direction:column;align-items:center;gap:0.8rem;transition:background 0.25s;cursor:default}
+.client-card:hover{background:var(--dark3)}
+.client-logo-wrap{display:flex;align-items:center;justify-content:center;height:64px;filter:opacity(0.75);transition:filter 0.25s}
+.client-card:hover .client-logo-wrap{filter:opacity(1)}
+.client-name{font-size:0.72rem;color:var(--text-muted);letter-spacing:0.06em;text-align:center;text-transform:uppercase}
+
+.social-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:2.5rem}
+.social-card{display:flex;flex-direction:column;align-items:center;gap:0.6rem;background:var(--dark3);border:1px solid rgba(255,255,255,0.07);border-radius:0.5rem;padding:1.6rem 1.4rem;text-decoration:none;color:var(--text-muted);transition:all 0.25s;width:160px}
+.social-card:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,150,58,0.07);transform:translateY(-3px)}
+.social-icon{font-size:1.6rem;color:var(--text-muted);transition:color 0.25s}
+.social-card:hover .social-icon{color:var(--gold)}
+.social-platform{font-size:0.82rem;font-weight:600;color:var(--white);letter-spacing:0.04em}
+.social-handle{font-size:0.72rem;letter-spacing:0.03em;text-align:center}
+</style>
+
+<footer>
+  <div style="display:flex;align-items:center;justify-content:center;gap:0.8rem;margin-bottom:0.8rem">
+  <img src="assets/logo_1.webp" alt="Street Vybz Entertainment &amp; Events" style="height:50px;width:auto;object-fit:contain;filter:drop-shadow(0 0 4px rgba(201,150,58,0.3))">
+  <div class="footer-logo" style="margin-bottom:0">Street Vybz Entertainment &amp; Events</div>
+</div>
+  
+  <div class="footer-copy">Nairobi, Kenya &nbsp; 0705 050 215 &nbsp; info@streetvybzent.com &nbsp; <span>streetvybzent.com</span></div>
+  <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.06);font-size:0.7rem;color:var(--text-muted);letter-spacing:0.06em">
+    &copy; <span id="copyrightYear"></span> Street Vybz Entertainment &amp; Events. All rights reserved.
+  </div>
+</footer>
+
+<script>
+// Gallery
+const grid = document.getElementById('galleryGrid');
+let allImages = [];
+let lbIdx = 0;
+
+const filterMap = {
+  'all':       () => true,
+  'tent':      t => t.includes('tent'),
+  'sound':     t => t.includes('sound') || t.includes('dj'),
+  'screen':    t => t.includes('screen'),
+  'stage':     t => t.includes('stage'),
+  'wedding':   t => t.includes('wedding'),
+  'corporate': t => t.includes('corporate'),
+};
+
+const FALLBACK_GALLERY = [
+  {label:"Stage and Tent Setup",category:"Stage Tents Decor",tags:"stage tent wedding",image_url:"assets/gallery_01_stage_and_tent_setup.webp"},
+  {label:"Wedding Marquee",category:"Tents Seats Decor",tags:"tent wedding decor",image_url:"assets/gallery_02_wedding_marquee.webp"},
+  {label:"LED Screen Corporate",category:"LED Screens",tags:"screen corporate",image_url:"assets/gallery_03_led_screen_corporate.webp"},
+  {label:"DJ Setup Outdoor",category:"DJ PA System",tags:"sound dj",image_url:"assets/gallery_04_dj_setup_outdoor.webp"},
+  {label:"Pro Sound Mixing",category:"PA System Sound",tags:"sound corporate",image_url:"assets/gallery_05_pro_sound_mixing.webp"},
+  {label:"Draped Tent Interior",category:"Tents Decor Lighting",tags:"tent decor wedding",image_url:"assets/gallery_06_draped_tent_interior.webp"},
+  {label:"LED Inside Wedding Tent",category:"LED Tents Decor",tags:"screen tent wedding",image_url:"assets/gallery_07_led_inside_wedding_tent.webp"},
+  {label:"Wedding Banquet Setup",category:"Seats Decor Tents",tags:"tent wedding decor",image_url:"assets/gallery_08_wedding_banquet_setup.webp"},
+  {label:"Corporate Conference",category:"Stage LED PA",tags:"stage screen corporate",image_url:"assets/gallery_09_corporate_conference.webp"},
+  {label:"Event Production",category:"Full Production",tags:"tent decor",image_url:"assets/gallery_10_event_production.webp"},
+  {label:"Outdoor Event Setup",category:"PA Tents Decor",tags:"tent decor corporate",image_url:"assets/gallery_11_outdoor_event_setup.webp"},
+  {label:"Full Event Setup",category:"Full Production",tags:"tent stage decor",image_url:"assets/gallery_12_full_event_setup.webp"},
+  {label:"Event Venue Setup",category:"Decor Lighting",tags:"decor tent",image_url:"assets/gallery_13_event_venue_setup.webp"},
+  {label:"Sound and Staging",category:"PA Stage Lighting",tags:"sound stage",image_url:"assets/gallery_14_sound_and_staging.webp"},
+  {label:"Live Event Production",category:"Full Production",tags:"tent decor wedding",image_url:"assets/gallery_15_live_event_production.webp"},
+  {label:"Decorated Venue",category:"Decor Tents",tags:"tent decor",image_url:"assets/gallery_16_decorated_venue.webp"},
+  {label:"Event Lighting",category:"Lighting Decor",tags:"decor",image_url:"assets/gallery_17_event_lighting.webp"},
+  {label:"Live Sound Setup",category:"PA System Sound",tags:"sound stage corporate",image_url:"assets/gallery_18_live_sound_setup.webp"},
+];
+
+function loadGallery() {
+  allImages = FALLBACK_GALLERY;
+  renderGallery(allImages);
+}
+
+function renderGallery(images) {
+  grid.innerHTML = '';
+  if (!images.length) {
+    grid.innerHTML = '<div style="color:var(--text-muted);padding:2rem;text-align:center">No images found.</div>';
+    return;
+  }
+  images.forEach((item, i) => {
+    const el = document.createElement('div');
+    el.className = 'gi';
+    el.dataset.index = i;
+    el.dataset.tags = item.tags || '';
+    el.innerHTML = `<img src="${item.image_url}" alt="${item.label}" loading="lazy">
+      <div class="gi-overlay">
+        <div class="gi-label">${item.label}</div>
+        <div class="gi-cat">${item.category}</div>
+      </div>`;
+    el.addEventListener('click', () => openLb(i));
+    grid.appendChild(el);
+  });
+}
+
+document.querySelectorAll('.gf').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.gf').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    const filtered = allImages.filter(img => filterMap[f](img.tags || ''));
+    renderGallery(filtered);
+  });
+});
+
+function openLb(i) {
+  lbIdx = i;
+  const item = allImages[i];
+  document.getElementById('lbImg').src = item.image_url;
+  document.getElementById('lbTitle').textContent = item.label;
+  document.getElementById('lbCat').textContent = item.category;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function navLb(dir) {
+  lbIdx = (lbIdx + dir + allImages.length) % allImages.length;
+  openLb(lbIdx);
+}
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target === document.getElementById('lightbox')) closeLb();
+});
+document.addEventListener('keydown', e => {
+  const lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowLeft') navLb(-1);
+  if (e.key === 'ArrowRight') navLb(1);
+});
+
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', loadGallery);
+</script>
+<script>document.getElementById("copyrightYear").textContent = new Date().getFullYear();</script>
+</body>
+</html>
